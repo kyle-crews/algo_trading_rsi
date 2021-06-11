@@ -33,6 +33,16 @@ ibm = get_historical_data('IBM', '2020-01-01')
 ibm
 print(ibm)
 
+# Firstly, we are defining a function named ‘get_rsi’ that takes the closing price of a stock (‘close’) and the lookback period (‘lookback’) as parameters. 
+# Inside the function, we are first calculating the returns of the stock using the ‘diff’ function provided by the Pandas package and stored it into the ‘ret’ 
+# variable. This function basically subtracts the current value from the previous value. Next, we are passing a for-loop on the ‘ret’ variable to distinguish 
+# gains from losses and append those values to the concerning variable (‘up’ or ‘down’). Then, we are calculating the Exponential Moving Averages for both the 
+# ‘up’ and ‘down’ using the ‘ewm’ function provided by the Pandas package and stored them into the ‘up_ewm’ and ‘down_ewm’ variable respectively. Using these 
+# calculated EMAs, we are determining the Relative Strength by following the formula we discussed before and stored it into the ‘rs’ variable. By making use of 
+# the calculated Relative Strength values, we are calculating the RSI values by following its formula. After doing some data processing and manipulations, we 
+# are returning the calculated Relative Strength Index values in the form of a Pandas dataframe. Finally, we are calling the created function to store the RSI 
+# values of IBM with 14 as the lookback period.
+
 def get_rsi(close, lookback):
     ret = close.diff()
     up = []
