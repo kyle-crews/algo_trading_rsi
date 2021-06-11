@@ -68,3 +68,13 @@ ibm['rsi_14'] = get_rsi(ibm['close'], 14)
 ibm = ibm.dropna()
 ibm
 print(ibm)
+
+ax1 = plt.subplot2grid((10,1), (0,0), rowspan = 4, colspan = 1)
+ax2 = plt.subplot2grid((10,1), (5,0), rowspan = 4, colspan = 1)
+ax1.plot(ibm['close'], linewidth = 2.5)
+ax1.set_title('IBM CLOSE PRICE')
+ax2.plot(ibm['rsi_14'], color = 'orange', linewidth = 2.5)
+ax2.axhline(30, linestyle = '--', linewidth = 1.5, color = 'grey')
+ax2.axhline(70, linestyle = '--', linewidth = 1.5, color = 'grey')
+ax2.set_title('IBM RELATIVE STRENGTH INDEX')
+plt.show()
